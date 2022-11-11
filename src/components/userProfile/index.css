@@ -21,3 +21,13 @@
     justify-content: flex-start;
     align-items: center;
 }
+.delete-img{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+.delete-btn{
+    margin-left: 40px;
+    background-color: transparent;
+    border: none;
+}

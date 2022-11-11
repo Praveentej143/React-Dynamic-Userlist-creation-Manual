@@ -35,6 +35,13 @@ class App extends Component{
   onSearch = (Event) =>{
       this.setState({searchInput:Event.target.value})
   }
+  deleteUser = (uniqueNo) =>{
+    const {userDetailsList} = this.state
+    const filteredUserData = userDetailsList.filter(each => each.uniqueNo !== uniqueNo)
+    this.setState({userDetailsList:filteredUserData})
+  }
+
+
   render(){
     const{searchInput,userDetailsList} = this.state
     const searchResults = userDetailsList.filter((eachItem) => eachItem.name.includes(searchInput))
@@ -44,7 +51,7 @@ class App extends Component{
         <h1 className='heading'>Users List</h1>
         <input type="search" onChange={this.onSearch} />
         <ul className='userlist'>
-          {searchResults.map((eachUser)=> <UserListComp users={eachUser} key={eachUser.uniqueNo} />)}
+          {searchResults.map((eachUser)=> <UserListComp users={eachUser} key={eachUser.uniqueNo} deleteUser = {this.deleteUser} />)}
         </ul>
       </div>
     </div>
